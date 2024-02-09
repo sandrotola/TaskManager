@@ -34,15 +34,18 @@ struct AddTaskView: View {
     }
     
     private func saveTask() {
+        // Format date to get hours and minutes
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-
+        
+        // Prepare task to save
         let newTask = Task()
         newTask.name = taskName
         newTask.type = taskType
         newTask.startTime = formatter.string(from: startTime)
         newTask.endTime = formatter.string(from: endTime)
 
+        // Call our Realm Manager to save the task in the local Database
         RealmManager.shared.addTask(newTask)
 
         // Close the modal

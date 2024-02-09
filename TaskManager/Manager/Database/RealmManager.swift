@@ -26,7 +26,7 @@ class RealmManager {
             try realm.write {
                 realm.add(task)
             }
-        } catch {
+        } catch let error {
             print("Error adding task: \(error.localizedDescription)")
         }
     }
@@ -61,9 +61,5 @@ class RealmManager {
         } catch {
             print("Error updating task: \(error.localizedDescription)")
         }
-    }
-
-    func fetchTasks() -> Results<Task> {
-        return realm.objects(Task.self)
     }
 }
